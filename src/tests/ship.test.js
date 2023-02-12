@@ -10,6 +10,7 @@ test('test to see if ship is sunk', () => {
     expect(newShip.hit()).toBe(2)
     expect(newShip.isSunk()).toBeFalsy()
     expect(newShip.hit()).toBe(1)
+    expect(newShip.isSunk()).toBeFalsy()
     expect(newShip.hit()).toBe(0)
     expect(newShip.isSunk()).toBeTruthy()
 });
