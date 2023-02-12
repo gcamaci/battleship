@@ -3,8 +3,11 @@ const GameBoard = () => {
     const ships = [];
 
     const placeShip = (ship,...coords) => {
-        ships.push({ship,})
+        let cors = coords
+        ships.push({ship,cors});
     }
 
-    return{placeShip}
+    return{placeShip,ships}
 }
+
+export{ GameBoard }
