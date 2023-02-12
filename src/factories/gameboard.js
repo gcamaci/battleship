@@ -1,13 +1,18 @@
 const GameBoard = () => {
-    //save ships as objects with cordinates I.E {ship,..cords}
+    
     const ships = [];
+    const missedAttacks = []
 
     const placeShip = (ship,...coords) => {
         let cors = coords
         ships.push({ship,cors});
     }
 
-    return{placeShip,ships}
+    const receiveAttack = (cord) => {
+        
+    }
+
+    return{placeShip,ships,receiveAttack}
 }
 
 export{ GameBoard }

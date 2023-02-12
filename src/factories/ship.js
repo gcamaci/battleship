@@ -1,6 +1,7 @@
 const Ship = (length) => {
     let health = length; 
-
+    
+    const getHealth = () => health;
     const hit = () => {
         health = health - 1
         return health
@@ -10,7 +11,7 @@ const Ship = (length) => {
         return health <= 0 ? true : false
     }
 
-    return {hit, isSunk}
+    return {hit, isSunk,getHealth}
 }
 
 export {Ship}
