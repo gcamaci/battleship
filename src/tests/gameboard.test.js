@@ -25,5 +25,6 @@ test('see if receive attack works',() => {
     gameBoard.placeShip(battleShip,30,31,32,33);
     gameBoard.receiveAttack(30)
     expect(gameBoard.ships[0].ship.getHealth()).toBe(3)
+    expect(gameBoard.attempts[0]).toBe(30)
 })
 

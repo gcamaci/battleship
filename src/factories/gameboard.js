@@ -1,7 +1,8 @@
 const GameBoard = () => {
     
     const ships = [];
-    const missedAttacks = []
+    const attempts = []
+    const getShips = () => ships;
 
     const placeShip = (ship,...coords) => {
         let cors = coords
@@ -9,10 +10,17 @@ const GameBoard = () => {
     }
 
     const receiveAttack = (cord) => {
-        
+        ships.forEach((shipObj) => {
+            if(shipObj.cors.includes(cord)){
+                shipObj.ship.hit()
+            }
+        });
+        attempts.push(cord)
     }
 
-    return{placeShip,ships,receiveAttack}
+    
+
+    return{placeShip,getShips,ships,receiveAttack,attempts}
 }
 
 export{ GameBoard }
