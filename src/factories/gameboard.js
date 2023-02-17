@@ -32,7 +32,7 @@ const GameBoard = () => {
             attempts.push(cord)
         }
 
-        if(allShipsSunk) {
+        if(shipsAreSunk) {
             return "Game Over"
         }
 
