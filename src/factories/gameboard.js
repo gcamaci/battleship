@@ -1,5 +1,4 @@
 const GameBoard = () => {
-    
     const ships = [];
     const attempts = []
     const getShips = () => ships;
@@ -9,15 +8,40 @@ const GameBoard = () => {
         ships.push({ship,cors});
     }
 
+    const shipsAreSunk = ships.every((ship) => ship.ship.isSunk());
 
     const receiveAttack = (cord) => {
-        ships.forEach((shipObj) => {
-            if(shipObj.cors.includes(cord)){
-                shipObj.ship.hit()
+        if (attempts.includes(cord)) return
+
+        let hit = false;
+
+        for (let i = 0; i < ships.length; i++) {
+            const ship = ships[i];
+            for (let j = 0; j < ship.cors.length; j++) {
+                if (ship.cors[j]===cord){
+                    ship.ship.hit()
+                    hit = true;
+                    break;
+                }
             }
-        });
+            if (hit) {
+                break;
+            }
+        }
+        if(!hit){
+            attempts.push(cord)
+        }
+
+        if(allShipsSunk) {
+            return "Game Over"
+        }
+
         attempts.push(cord)
+       
     }
+
+
+
 
     //create pure function to push coordinate to attempts. 
     //create pure function to remove cord from ships coordinate array. I think this could be in ship factory itself?

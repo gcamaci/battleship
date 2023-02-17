@@ -18,7 +18,6 @@ test('push ship and ship cords to gameBoard array', () => {
 
 });     
 
-
 test('see if receive attack works',() => {
     const battleShip = Ship(4)
     const gameBoard = GameBoard()
