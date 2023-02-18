@@ -11,22 +11,16 @@ const GameBoard = () => {
             }
         }
     })()
-    const getBoard = () => gameBoard;
-    const getShips = () => ships;
-
+    const shipsAreSunk = ships.every((ship) => ship.ship.isSunk());
 
 //place ship object which contains the battleship as a property and an array of the coordinates.
-    const placeShip = (ship,...coords) => {
-        let cors = coords
-        ships.push({ship,cors});
+    const placeShip = (ship,cord) => {
+        const [x,y] = formatCord(cord)
+        
+
+
     }
 
-    const shipsAreSunk = ships.every((ship) => ship.ship.isSunk());
-    
-
-
-
-    
     const receiveAttack = (cord) => {
         if (attempts.includes(cord)) return
 
@@ -59,12 +53,15 @@ const GameBoard = () => {
 
 
 
-
+    function formatCord(cord){
+        return cord.split('').map((num)=>parseInt(num))
+    }
     //create pure function to push coordinate to attempts. 
     //create pure function to remove cord from ships coordinate array. I think this could be in ship factory itself?
     
-
-    return{placeShip,getShips,ships,receiveAttack,attempts}
+    const getBoard = () => gameBoard;
+    const getShips = () => ships;
+    return{placeShip,getShips,ships,receiveAttack,getBoard}
 }
 
 export{ GameBoard }

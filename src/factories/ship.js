@@ -1,6 +1,7 @@
-const Ship = (length) => {
+const Ship = (length,shipType) => {
+    let horizantal = true
     let health = length; 
-    
+    const name = shipType
     const getHealth = () => health;
     
     const hit = () => {
@@ -12,8 +13,16 @@ const Ship = (length) => {
     const isSunk = () => {
         return health <= 0 ? true : false
     }
-
-    return {hit, isSunk,getHealth}
+    const getPosition = () => horizantal
+    const togglePosition = () => {
+        if (horizantal){
+            horizantal = false
+        } else {
+            horizantal = true
+        }
+        
+    }
+    return {hit, isSunk,getHealth,name,getPosition,togglePosition}
 }
 
 export {Ship}

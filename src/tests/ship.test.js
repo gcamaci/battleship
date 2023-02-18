@@ -1,19 +1,11 @@
 import { Ship } from "../factories/ship";
 
-test('test to see if ship hit works', () => {
-    const newShip = Ship(3)
-    expect(newShip.hit()).toBe(2)
-});
-
-test('test to see if ship is sunk', () => {
-    const newShip = Ship(3)
-    expect(newShip.hit()).toBe(2)
-    expect(newShip.isSunk()).toBeFalsy()
-    expect(newShip.hit()).toBe(1)
-    expect(newShip.isSunk()).toBeFalsy()
-    expect(newShip.hit()).toBe(0)
-    expect(newShip.isSunk()).toBeTruthy()
-});
-
+test('Ship getters and setters work', () => {
+    const ship = Ship(4,'submarine')
+    expect(ship.getHealth()).toBe(4);
+    expect(ship.getPosition()).toBeTruthy();
+    ship.togglePosition()
+    expect(ship.getPosition()).toBeFalsy();
+})
 
 

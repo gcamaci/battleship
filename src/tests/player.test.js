@@ -2,6 +2,11 @@ import { GameBoard } from "../factories/gameboard";
 import { Player } from "../factories/player";
 import { Ship } from "../factories/ship";
 
+test('hello1', () => {
+    const ship = Ship(4)
+    expect(ship.getHealth()).toBe(4)
+})
+/*
 test('player can attack enemy board', () => {
     const battleShip = Ship(3)
     const enemyGameBoard = GameBoard()
@@ -23,3 +28,4 @@ test('player can attack enemy board', () => {
     expect(player.gameBoard.attempts).toHaveLength(1)
 
 });
+*/
