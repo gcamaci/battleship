@@ -1,7 +1,7 @@
-const Ship = (length,shipType) => {
+const Ship = (length,name) => {
     let horizantal = true
     let health = length; 
-    const name = shipType
+    
     const getHealth = () => health;
     
     const hit = () => {
