@@ -16,12 +16,16 @@ const GameBoard = () => {
 //place ship object which contains the battleship as a property and an array of the coordinates.
     const placeShip = (ship,cord) => {
         let [x,y] = formatCord(cord)
+        //if ship is horizontal 
         if(ship.getPosition()){
-            //
+            if(gameBoard[x].length - y < ship.length) return
+            for (let i = 0; i < ship.length; i++){
+                gameBoard[x][y + i] = ship.name
+            }  
+        } else {
+            //vertical placement 
         }
 
-
-        gameBoard[x][y] = ship.name
         
 
     }

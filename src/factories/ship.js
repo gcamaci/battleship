@@ -22,7 +22,7 @@ const Ship = (length,name) => {
         }
         
     }
-    return {hit, isSunk,getHealth,name,getPosition,togglePosition}
+    return {hit, isSunk,getHealth,name,getPosition,togglePosition,length}
 }
 
 export {Ship}

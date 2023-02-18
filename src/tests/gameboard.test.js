@@ -24,3 +24,15 @@ test('places Ship on correct cordinate', () => {
     playerBoard.placeShip(submarine,'17')
     expect(playerBoard.getBoard()[1][7]).toBe('submarine')
 });
+
+
+test('places ship horizontal, wont go out of bounds',() => {
+    const playerBoard = GameBoard()
+    const submarine = Ship(3,'submarine');
+    playerBoard.placeShip(submarine,'12')
+    expect(playerBoard.getBoard()[1][2]).toBe('submarine')
+    expect(playerBoard.getBoard()[1][3]).toBe('submarine')
+    expect(playerBoard.getBoard()[1][4]).toBe('submarine')
+    expect(playerBoard.getBoard()[1][5]).toBe(0)
+    //expect(playerBoard.getBoard()[1][4]).toBe('submarine')
+})
