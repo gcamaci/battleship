@@ -25,11 +25,9 @@ const GameBoard = () => {
         } else {
             //vertical placement 
         }
-
         ships.push(ship)
-
     }
-
+    //records attempts, returns if hit.
     const receiveAttack = (cord) => {
         if (attempts.includes(cord)) return
         let hit = false;
@@ -39,13 +37,13 @@ const GameBoard = () => {
             gameBoard[y][y] = 'X'
             
         } else {
+            //hit proper ship in ships array
             ships.forEach((ship) => {
                 if (gameBoard[x][y] === ship.name){
                     ship.hit()
                     hit = true
                 }
             })
-
         }
         attempts.push(cord)
         return hit
@@ -61,9 +59,6 @@ const GameBoard = () => {
         }
         return cord_array
     }
-    //create pure function to push coordinate to attempts. 
-    //create pure function to remove cord from ships coordinate array. I think this could be in ship factory itself?
-    
     const getBoard = () => gameBoard;
     const getShips = () => ships;
     return{placeShip,getShips,ships,receiveAttack,getBoard,formatCord}

@@ -2,7 +2,15 @@ import { GameBoard } from "../factories/gameboard";
 import { Player } from "../factories/player";
 import { Ship } from "../factories/ship";
 
-test('hello1', () => {
-    const ship = Ship(4)
-    expect(ship.getHealth()).toBe(4)
+test('gameBoard inside player?',() => {
+    const player = Player(GameBoard());
+    const ship = Ship(4,'submarine');
+
+    player.gameBoard.placeShip(ship,'42');
+
+
+    player.attack('42')
+    
+
+    expect(player.gameBoard.getBoard()[4][2]).toBe('submarine')
 })
