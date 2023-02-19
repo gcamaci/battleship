@@ -48,12 +48,8 @@ const GameBoard = () => {
 
         }
         attempts.push(cord)
-
-       
-       
+        return hit
     }
-
-
 
     function formatCord(cord){
         const zeroTest = parseInt(cord);
