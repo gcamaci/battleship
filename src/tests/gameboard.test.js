@@ -6,7 +6,8 @@ test('format cordinate for place ship and attack function',() => {
     const playerBoard = GameBoard()
 
     expect(playerBoard.formatCord('57')).toStrictEqual([5,7])
-
+    expect(playerBoard.formatCord('7')).toStrictEqual([0,7])
+    expect(playerBoard.formatCord('0')).toStrictEqual([0,0])
 })
 
 test('test initial gameboard', () => {

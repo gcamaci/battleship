@@ -56,7 +56,13 @@ const GameBoard = () => {
 
 
     function formatCord(cord){
+        const zeroTest = parseInt(cord);
         const cord_array = cord.split('').map((num)=>parseInt(num))
+
+        if (zeroTest < 10){
+            cord_array[1] = cord_array[0]
+            cord_array[0] = 0; 
+        }
         return cord_array
     }
     //create pure function to push coordinate to attempts. 
