@@ -26,37 +26,30 @@ const GameBoard = () => {
             //vertical placement 
         }
 
-        
+        ships.push(ship)
 
     }
 
     const receiveAttack = (cord) => {
         if (attempts.includes(cord)) return
-
         let hit = false;
-
-        for (let i = 0; i < ships.length; i++) {
-            const ship = ships[i];
-            for (let j = 0; j < ship.cors.length; j++) {
-                if (ship.cors[j]===cord){
-                    ship.ship.hit()
-                    hit = true;
-                    break;
+        let [x,y] = formatCord(cord)
+        //missed
+        if (gameBoard[x][y] === 0){
+            gameBoard[y][y] = 'X'
+            
+        } else {
+            ships.forEach((ship) => {
+                if (gameBoard[x][y] === ship.name){
+                    ship.hit()
+                    hit = true
                 }
-            }
-            if (hit) {
-                break;
-            }
-        }
-        if(!hit){
-            attempts.push(cord)
-        }
+            })
 
-        if(shipsAreSunk) {
-            return "Game Over"
         }
-
         attempts.push(cord)
+
+       
        
     }
 
