@@ -49,13 +49,17 @@ test('receive Attack from player, hit correct ship',() => {
 
     //may need to change receive attack function
 
-    /*
+    
     playerBoard.receiveAttack('12') 
-    expect(playerBoard.getShips()[0].getHealth()).toBe(2)
+    expect(playerBoard.getShips()[2].getHealth()).toBe(3)
     expect(playerBoard.receiveAttack('13')).toBeTruthy()
-    expect(playerBoard.getShips()[0].getHealth()).toBe(1)
+    expect(playerBoard.getShips()[2].getHealth()).toBe(2)
     playerBoard.receiveAttack('14') 
-    expect(playerBoard.getShips()[0].getHealth()).toBe(0)
+    expect(playerBoard.getShips()[2].getHealth()).toBe(1)
     expect(playerBoard.receiveAttack('14')).toBeFalsy()
-    expect(playerBoard.getShips()[0].getHealth()).toBe(0) */
+    expect(playerBoard.getShips()[2].getHealth()).toBe(1) 
+    expect(playerBoard.receiveAttack('15')).toBeTruthy();
+    expect(playerBoard.receiveAttack('15')).toBeFalsy()
+    expect(playerBoard.getShips()[2].getHealth()).toBe(0)
+
 })
