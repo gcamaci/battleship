@@ -6,6 +6,7 @@ test('Ship getters and setters work', () => {
     expect(ship.getPosition()).toBeTruthy();
     ship.togglePosition()
     expect(ship.getPosition()).toBeFalsy();
+    expect(ship.getName()).toBe('navy')
 })
 
 
