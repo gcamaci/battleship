@@ -1,9 +1,29 @@
-const Ship = (length,name) => {
+const Ship = (length) => {
     let horizantal = true
     let health = length; 
     
     const getHealth = () => health;
-    
+    const getName = () => {
+        let name;
+        switch(length){
+            case 2:
+                name = 'submarine'
+                break;
+            case 3:
+                name = 'sail'
+                break;
+            case 4:
+                name = 'navy'
+                break;
+            case 5:
+                name = 'battleship'
+                break;
+            case 6:
+                name = 'destroyer'
+                break;   
+        }
+        return name
+    }
     const hit = () => {
         if(isSunk()) return
         health = health - 1
@@ -22,7 +42,7 @@ const Ship = (length,name) => {
         }
         
     }
-    return {hit, isSunk,getHealth,name,getPosition,togglePosition,length}
+    return {hit, isSunk,getHealth,getName,getPosition,togglePosition,length}
 }
 
 export {Ship}

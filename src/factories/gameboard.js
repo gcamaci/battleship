@@ -1,7 +1,9 @@
+import { Ship } from "./ship"
+
 const GameBoard = () => {
     const gameBoard = []
     const attempts = []
-    const ships = []
+    const ships = [Ship(2),Ship(3),Ship(4),Ship(5),Ship(6)]
 
     const initializeGameboard = (()=>{
         for (let i = 0; i < 10; i++){
