@@ -30,10 +30,7 @@ const GameBoard = () => {
             //vertical placement 
         }
         return placed
-    }
-
-
-
+    }   
     
     //records attempts, returns if hit.
     const receiveAttack = (cord) => {

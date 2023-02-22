@@ -2,8 +2,16 @@ import { GameBoard } from "./gameboard"
 const Player = () => {
 
     const gameBoard = GameBoard()
-    const attack = (cord,enemyBoard) => {
-        enemyBoard.receiveAttack(cord)
+
+    const attack = (cord,enemy) => {
+
+
+        enemy.gameBoard.receiveAttack(cord)
+        
+
+
+
+        //note, receiveAttack returns a boolean true if ship was hit. 
     }
 
     const randomAttack = (enemyBoard) => {
@@ -14,3 +22,4 @@ const Player = () => {
 }
 
 export {Player}
+
