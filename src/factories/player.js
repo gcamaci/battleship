@@ -1,6 +1,7 @@
-const Player = (gameBoard) => {
+import { GameBoard } from "./gameboard"
+const Player = () => {
 
-
+    const gameBoard = GameBoard()
     const attack = (cord,enemyBoard) => {
         enemyBoard.receiveAttack(cord)
     }

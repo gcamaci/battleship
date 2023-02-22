@@ -17,23 +17,30 @@ const GameBoard = () => {
 
 //place ship object which contains the battleship as a property and an array of the coordinates.
     const placeShip = (ship,cord) => {
+        let placed = false;
         let [x,y] = formatCord(cord)
         //if ship is horizontal 
         if(ship.getPosition()){
-            if(gameBoard[x].length - y < ship.length) return
+            if(gameBoard[x].length - y < ship.length) return placed
             for (let i = 0; i < ship.length; i++){
                 gameBoard[x][y + i] = ship.getName()
+                placed = true;
             }  
         } else {
             //vertical placement 
         }
+        return placed
     }
+
+
+
+    
     //records attempts, returns if hit.
     const receiveAttack = (cord) => {
         if (attempts.includes(cord)) return
         let hit = false;
         let [x,y] = formatCord(cord)
-        //missed
+        
         if (gameBoard[x][y] === 0){
             gameBoard[y][y] = 'X'
             
@@ -62,7 +69,7 @@ const GameBoard = () => {
     }
     const getBoard = () => gameBoard;
     const getShips = () => ships;
-    return{placeShip,getShips,ships,receiveAttack,getBoard,formatCord}
+    return{placeShip,getShips,receiveAttack,getBoard,formatCord}
 }
 
 export{ GameBoard }
