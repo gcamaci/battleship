@@ -1,5 +1,5 @@
-import { GameController } from "../factories/gameLogic";
-const setInitialBoard = () => {
+
+const buildComputerBoard = (callBack,computerBoard) => {
     const main_container = document.getElementById('content-container');
     const enemyBoard = document.createElement('div');
     enemyBoard.id = 'enemy_board'
@@ -13,11 +13,11 @@ const setInitialBoard = () => {
         targetSpace.dataset.cord = `${i}`
         enemyBoard.appendChild(targetSpace);
 
-        targetSpace.addEventListener('click',GameController.clickAttack)
+        targetSpace.addEventListener('click',callBack)
         
     }
     main_container.appendChild(enemyBoard);
-    setAttrbiutes(GameController.computer.gameBoard.getBoard())
+    setAttrbiutes(computerBoard)
 
 
 };
@@ -25,15 +25,15 @@ const setInitialBoard = () => {
 
 
 function setAttrbiutes(gameboard){
-    let attribute_values = gameboard.flat()
+    
     const nodeList = document.querySelectorAll('.targets')
     nodeList.forEach((target,index) => {
-        target.dataset.status = attribute_values[index]
-        target.innerText = attribute_values[index]
+        target.dataset.status = gameboard[index]
+        target.innerText = gameboard[index]
     })
     
-    return attribute_values
+    
     
 };
 
-export {setInitialBoard,setAttrbiutes}
+export { buildComputerBoard }

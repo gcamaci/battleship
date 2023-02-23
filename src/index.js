@@ -1,5 +1,2 @@
 import style from './style.css'
-import { setInitialBoard } from './ui/board'
-
-
-setInitialBoard()
+import { GameController } from './factories/gameLogic'
