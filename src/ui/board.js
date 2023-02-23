@@ -1,6 +1,5 @@
-
-
-const setInitialBoard = (() => {
+import { GameController } from "../factories/gameLogic";
+const setInitialBoard = () => {
     const main_container = document.getElementById('content-container');
     const enemyBoard = document.createElement('div');
     enemyBoard.id = 'enemy_board'
@@ -14,18 +13,18 @@ const setInitialBoard = (() => {
         targetSpace.dataset.cord = `${i}`
         enemyBoard.appendChild(targetSpace);
 
-        targetSpace.addEventListener('click', (event) => {
-            console.log(targetSpace.dataset.cord)
-            console.log(targetSpace.dataset.status)
-        })
+        targetSpace.addEventListener('click',GameController.clickAttack)
+        
     }
     main_container.appendChild(enemyBoard);
-
-})();
-
+    setAttrbiutes(GameController.computer.gameBoard.getBoard())
 
 
-const setAttrbiutes = (gameboard) => {
+};
+
+
+
+function setAttrbiutes(gameboard){
     let attribute_values = gameboard.flat()
     const nodeList = document.querySelectorAll('.targets')
     nodeList.forEach((target,index) => {

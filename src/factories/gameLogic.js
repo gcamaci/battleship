@@ -1,5 +1,6 @@
+import { setAttrbiutes } from "../ui/board";
 import { Player } from "./player"
-const Game = (() => {
+const GameController = (() => {
     const user = Player()
     const computer = Player()
     let gameOver = false;
@@ -10,7 +11,27 @@ const Game = (() => {
     computer.gameBoard.placeShip(computer.gameBoard.getShips()[3],'95')
     computer.gameBoard.placeShip(computer.gameBoard.getShips()[4],'64')
 
-    
 
+    const clickAttack = event => {
+        let cord = event.target.dataset.cord 
+        if(user.attack(cord,computer)){
+            console.log('you hit a ship')
+        } else { 
+            console.log('you missed')
+        }
+    }
+
+    const checkWin = () => {
+        
+    }
+
+    
+    return {
+        clickAttack,
+        user,
+        computer
+    }
 })()
+
+export { GameController }
 

@@ -4,10 +4,12 @@ const Player = () => {
     const gameBoard = GameBoard()
 
     const attack = (cord,enemy) => {
-        enemy.gameBoard.receiveAttack(cord)
+        return enemy.gameBoard.receiveAttack(cord)
         //note, receiveAttack returns a boolean true if ship was hit. 
     }
-
+    const getFlatBoard = () => {
+        
+    }
 
     const randomAttack = (enemyBoard) => {
         const randomCord = Math.floor(Math.random() * 100) + 1;
