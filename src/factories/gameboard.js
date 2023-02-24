@@ -10,11 +10,12 @@ const GameBoard = () => {
             gameBoard[i] = []
             for (let j = 0; j < 10; j++){
                 gameBoard[i][j] = 0;
-            }
+            }   
         }
     })()
-    const shipsAreSunk = ships.every((ship) => ship.isSunk());
-
+    const allShipSunk = () => {
+        return ships.every((ship) => ship.isSunk());
+    }    
 //place ship object which contains the battleship as a property and an array of the coordinates.
     const placeShip = (ship,cord) => {
         let placed = false;
@@ -72,7 +73,7 @@ const GameBoard = () => {
     }
     const getBoard = () => gameBoard;
     const getShips = () => ships;
-    return{placeShip,getShips,receiveAttack,getBoard,formatCord}
+    return{placeShip,getShips,receiveAttack,getBoard,formatCord,allShipSunk}
 }
 
 export{ GameBoard }
