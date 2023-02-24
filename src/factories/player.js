@@ -15,7 +15,7 @@ const Player = () => {
 
     const randomAttack = (enemyBoard) => {
         const randomCord = Math.floor(Math.random() * 100) + 1;
-        enemyBoard.receiveAttack(randomCord.toString())
+        return enemyBoard.receiveAttack(randomCord.toString())
     }
     return {attack,gameBoard,randomAttack,getFlatBoard}
 }

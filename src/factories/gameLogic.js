@@ -23,14 +23,26 @@ const GameController = (() => {
     const playRound = event => {
         if (gameOver) return
         let cord = event.target.dataset.cord 
-        //if hit
+
+        const [userHit, userTarget] = user.attack(cord,computer)
+        const [computerHit, computerTarget] = computer.randomAttack(user.gameBoard)
+
+        console.log(userHit)
+        console.log(userTarget.getName())
+        /*
+        if(computer.randomAttack(user.gameBoard)){
+            console.log('computer hit you')
+        } else{
+            console.log('computer miss')
+        }
+
+
         if(user.attack(cord,computer)){
-            //this could be all the UI stuff.
-            // 
+            console.log('you hit') 
         } else { 
             console.log('you missed')
         }
-
+        */
         console.log(checkWin())
         //check win called down here, after enemy makes turn.
         //render boards called down here 

@@ -38,6 +38,7 @@ const GameBoard = () => {
         if (attempts.includes(cord)) return
         let hit = false;
         let [x,y] = formatCord(cord)
+        let targetShip;
         
         if (gameBoard[x][y] === 0){
             gameBoard[y][y] = 'X'
@@ -47,9 +48,10 @@ const GameBoard = () => {
             ships.forEach((ship) => {
                 if (gameBoard[x][y] === ship.getName()){
                     ship.hit()
-                    hit = true
+                    hit = true;
+                    targetShip = ship
                     gameBoard[x][y] = 'X'
-                    if(ship.isSunk()){
+                    if (ship.isSunk()) {
                         //do something when ship is sunk 
                         console.log(`Youve sunk enemy${ship.getName()}`)
                         
@@ -58,7 +60,7 @@ const GameBoard = () => {
             })  
         }
         attempts.push(cord)
-        return hit
+        return [hit, targetShip]
     }
 
     function formatCord(cord){
