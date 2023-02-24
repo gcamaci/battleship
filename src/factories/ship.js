@@ -25,7 +25,7 @@ const Ship = (length) => {
         return name
     }
     const hit = () => {
-        if(isSunk()) return
+        if(isSunk()) return true
         health = health - 1
         return health
     };

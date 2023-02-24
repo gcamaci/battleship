@@ -12,18 +12,24 @@ const GameController = (() => {
     computer.gameBoard.placeShip(computer.gameBoard.getShips()[3],'95')
     computer.gameBoard.placeShip(computer.gameBoard.getShips()[4],'64')
 
-
+    //user makes move,if hit check win and handle gameController
     const playRound = event => {
         let cord = event.target.dataset.cord 
+        //if hit
         if(user.attack(cord,computer)){
-            console.log('you hit a ship')
+            //this could be all the UI stuff.
+            // 
         } else { 
             console.log('you missed')
         }
+
+
+        //check win called down here, after enemy makes turn.
+        //render boards called down here 
     }
 
     const checkWin = () => {
-
+        
     }
 
     //creates computer board with playround as click event callback and flattened board for rendering board

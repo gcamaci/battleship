@@ -47,8 +47,14 @@ const GameBoard = () => {
                 if (gameBoard[x][y] === ship.getName()){
                     ship.hit()
                     hit = true
+                    gameBoard[x][y] = 'X'
+                    if(ship.isSunk()){
+                        //do something when ship is sunk 
+                        console.log(`Youve sunk enemy${ship.getName()}`)
+                        
+                    }
                 }
-            })
+            })  
         }
         attempts.push(cord)
         return hit

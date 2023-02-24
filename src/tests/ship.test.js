@@ -9,4 +9,14 @@ test('Ship getters and setters work', () => {
     expect(ship.getName()).toBe('navy')
 })
 
+test('Ship.hit() returns boolean if sunk',() => {
+    const ship = Ship(4)
+    expect(ship.hit()).toBe(3)
+    expect(ship.hit()).toBe(2)
+    expect(ship.hit()).toBe(1)
+    expect(ship.hit()).toBe(0)
+    expect(ship.hit()).toBe(true)
+
+})
+
 
