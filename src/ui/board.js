@@ -9,7 +9,7 @@ const buildComputerBoard = (callBack,computerBoard) => {
     for (let i = 0; i < 100; i++) {
         const targetSpace = document.createElement('div')
         targetSpace.classList.add('border','border-black','targets')
-        targetSpace.innerText = i
+        targetSpace.style.backgroundColor = 'blue'
         targetSpace.dataset.cord = `${i}`
         enemyBoard.appendChild(targetSpace);
 
@@ -18,9 +18,28 @@ const buildComputerBoard = (callBack,computerBoard) => {
     }
     main_container.appendChild(enemyBoard);
     setAttrbiutes(computerBoard)
-
-
 };
+
+const renderComputerBoard = (computer) => {
+    const targetList = document.querySelectorAll('.targets');
+    const flatBoard = computer.getFlatBoard()
+    console.log(flatBoard)
+    
+    for (let i = 0; i < targetList.length; i++){
+        if(flatBoard[i] === 0){
+            targetList[i].style.backgroundColor = 'blue'
+
+        } else if (flatBoard[i] === 1){
+            targetList[i].style.backgroundColor = 'green'
+        } else if(flatBoard[i] === 'X' ){
+            targetList[i].style.backgroundColor ='red'
+        } else {
+            targetList[i].style.backgroundColor = 'blue'
+        }
+        
+    }
+   
+}
 
 
 
@@ -29,11 +48,11 @@ function setAttrbiutes(gameboard){
     const nodeList = document.querySelectorAll('.targets')
     nodeList.forEach((target,index) => {
         target.dataset.status = gameboard[index]
-        target.innerText = gameboard[index]
+        //target.innerText = gameboard[index]
     })
     
     
     
 };
 
-export { buildComputerBoard }
+export { buildComputerBoard,renderComputerBoard }

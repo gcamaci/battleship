@@ -1,4 +1,5 @@
-import { buildComputerBoard } from "../ui/board";
+import { buildComputerBoard, renderComputerBoard } from "../ui/board";
+
 import { Player } from "./player"
 const GameController = (() => {
     const user = Player()
@@ -25,24 +26,16 @@ const GameController = (() => {
         let cord = event.target.dataset.cord 
 
         const [userHit, userTarget] = user.attack(cord,computer)
-        const [computerHit, computerTarget] = computer.randomAttack(user.gameBoard)
+        const [computerHit, computerTarget] = computer.randomAttack(user.gameBoard);
 
         console.log(userHit)
-        console.log(userTarget.getName())
-        /*
-        if(computer.randomAttack(user.gameBoard)){
-            console.log('computer hit you')
-        } else{
-            console.log('computer miss')
-        }
-
-
-        if(user.attack(cord,computer)){
-            console.log('you hit') 
-        } else { 
-            console.log('you missed')
-        }
-        */
+        
+        //user hit UI stuff
+        //renderPlayerBoard(userBoard)
+        //renderComputerBoard(userBoard)
+        
+        renderComputerBoard(computer);
+       
         console.log(checkWin())
         //check win called down here, after enemy makes turn.
         //render boards called down here 

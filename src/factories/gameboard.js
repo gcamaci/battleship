@@ -41,7 +41,7 @@ const GameBoard = () => {
         let targetShip;
         
         if (gameBoard[x][y] === 0){
-            gameBoard[y][y] = 'X'
+            gameBoard[x][y] = 'X'
             
         } else {
             //hit proper ship in ships array
@@ -50,7 +50,7 @@ const GameBoard = () => {
                     ship.hit()
                     hit = true;
                     targetShip = ship
-                    gameBoard[x][y] = 'X'
+                    gameBoard[x][y] = 1
                     if (ship.isSunk()) {
                         //do something when ship is sunk 
                         console.log(`Youve sunk enemy${ship.getName()}`)
