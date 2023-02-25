@@ -1,5 +1,7 @@
 //going to build both boards after user initializes ship placement
 
+
+
 const buildComputerBoard = (callBack,computerBoard,userGameboard) => {
     const main_container = document.getElementById('content-container');
     const userBoard = document.createElement('div')
@@ -9,7 +11,7 @@ const buildComputerBoard = (callBack,computerBoard,userGameboard) => {
     userBoard.id = 'user_board'
     userBoard.classList.add('grid','grid-cols-10','w-3/5','h-96')// user board TW
 
-
+    
     for (let i = 0; i < 100; i++) {
         const computerTarget = document.createElement('div')
         computerTarget.classList.add('border','border-black','targets')
@@ -19,38 +21,44 @@ const buildComputerBoard = (callBack,computerBoard,userGameboard) => {
         computerTarget.addEventListener('click',callBack);
         
         const userTarget = document.createElement('div');
-        userTarget.classList.add('border','border-black','user-target');
+        userTarget.classList.add('border','border-black','user-targets');
         userTarget.style.backgroundColor = 'blue'
         userTarget.dataset.cord = `${i}`
         userTarget.innerText = userGameboard[i]
         userBoard.appendChild(userTarget)
         
 
-        
     }
     main_container.append(userBoard,enemyBoard);
     setAttrbiutes(computerBoard)
 };
 //come back to this, make it render both boards at once
-const renderComputerBoard = (computer) => {
-    const targetList = document.querySelectorAll('.targets');
-    const flatBoard = computer.getFlatBoard()
-    console.log(flatBoard)
+const renderComputerBoard = (computer,user) => {
+    const nodes = document.querySelectorAll('.targets');
+    const user_nodes = document.querySelectorAll('.user-targets')
+    const nodeObjArray = [
+        [computer,nodes],
+        [user,user_nodes]
+    ]
     
-    for (let i = 0; i < targetList.length; i++){
-        if(flatBoard[i] === 0){
-            targetList[i].style.backgroundColor = 'blue'
-
-        } else if (flatBoard[i] === 1){
-            targetList[i].style.backgroundColor = 'green'
-        } else if(flatBoard[i] === 'X' ){
-            targetList[i].style.backgroundColor ='red'
-        } else {
-            targetList[i].style.backgroundColor = 'blue'
+    console.log(nodeObjArray[1][1])
+    
+    for (let i = 0; i < nodeObjArray.length; i++) {
+        let board = nodeObjArray[i][0]
+        let nodes = nodeObjArray[i][1]
+        for (let i = 0; i < nodes.length; i++){
+            if(board[i] === 0){
+                nodes[i].style.backgroundColor = 'blue'
+    
+            } else if (board[i] === 1){
+                nodes[i].style.backgroundColor = 'green'
+            } else if(board[i] === 'X' ){
+                nodes[i].style.backgroundColor ='red'
+            } else {
+                nodes[i].style.backgroundColor = 'blue'
+            }     
         }
-        
     }
-   
 }
 const initialUserBoard = () => {
     const enemyBoard = document.createElement('div');

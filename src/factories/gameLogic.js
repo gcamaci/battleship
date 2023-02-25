@@ -37,7 +37,7 @@ const GameController = (() => {
         //console.log(userHit)
     
         
-        renderComputerBoard(computer);
+        renderComputerBoard(computer.getFlatBoard(),user.getFlatBoard());
        
         console.log(checkWin())
         //check win called down here, after enemy makes turn.
