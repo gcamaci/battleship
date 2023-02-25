@@ -25,10 +25,13 @@ const GameController = (() => {
         if (gameOver) return
         let cord = event.target.dataset.cord 
 
-        const [userHit, userTarget] = user.attack(cord,computer)
-        const [computerHit, computerTarget] = computer.randomAttack(user.gameBoard);
+        //this causing problems 
+        //const [userHit, userTarget] = user.attack(cord,computer)
+        //[computerHit, computerTarget] = computer.randomAttack(user.gameBoard);
+        user.attack(cord,computer)
+        
 
-        console.log(userHit)
+        //console.log(userHit)
         
         //user hit UI stuff
         //renderPlayerBoard(userBoard)
