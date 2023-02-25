@@ -22,14 +22,20 @@ const GameBoard = () => {
         let [x,y] = formatCord(cord)
         //if ship is horizontal 
         if(ship.getPosition()){
-            if(gameBoard[x].length - y < ship.length) return placed
+            if(gameBoard[x].length - y < ship.length) return
             for (let i = 0; i < ship.length; i++){
                 gameBoard[x][y + i] = ship.getName()
                 placed = true;
-            }  
-        } else {
-            //vertical placement 
+            }
         }
+        else{
+            if (10 - x < ship.length) return
+            for (let i = 0; i < ship.length; i++){
+                gameBoard[x + i][y] = ship.getName()
+                placed = true;
+            }
+        }
+        
         return placed
     }   
     
@@ -101,7 +107,7 @@ const GameBoard = () => {
             if(length > verticalDistance) return
             for (let i = 0 ; i < length; i++){
                 if(gameBoard[x + i][y] === 0){
-                    count = count +1
+                    count = count + 1
                 }
             }
         }
