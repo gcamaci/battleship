@@ -14,28 +14,28 @@ const GameController = (() => {
     computer.gameBoard.placeShip(computer.gameBoard.getShips()[4],'64')
 
     //manually placing user ships 
-    user.gameBoard.placeShip(user.gameBoard.getShips()[0],'3')
-    user.gameBoard.placeShip(user.gameBoard.getShips()[1],'41')
-    user.gameBoard.placeShip(user.gameBoard.getShips()[2],'30')
-    user.gameBoard.placeShip(user.gameBoard.getShips()[3],'85')
-    user.gameBoard.placeShip(user.gameBoard.getShips()[4],'74')
+    user.gameBoard.placeShip(user.gameBoard.getShips()[0],'6')
+    user.gameBoard.placeShip(user.gameBoard.getShips()[1],'45')
+    user.gameBoard.placeShip(user.gameBoard.getShips()[2],'20')
+    user.gameBoard.placeShip(user.gameBoard.getShips()[3],'72')
+    user.gameBoard.placeShip(user.gameBoard.getShips()[4],'91')
 
     //user makes move,if hit check win and handle gameController
     const playRound = event => {
         if (gameOver) return
         let cord = event.target.dataset.cord 
 
-        //this causing problems 
+        //this causing problems, returning an array with ship, even tho there wont always be ship
         //const [userHit, userTarget] = user.attack(cord,computer)
         //[computerHit, computerTarget] = computer.randomAttack(user.gameBoard);
-        user.attack(cord,computer)
+
         
+        //still returning array for now
+        user.attack(cord,computer)
+        computer.randomAttack(user.gameBoard)
 
         //console.log(userHit)
-        
-        //user hit UI stuff
-        //renderPlayerBoard(userBoard)
-        //renderComputerBoard(userBoard)
+    
         
         renderComputerBoard(computer);
        
@@ -65,7 +65,7 @@ const GameController = (() => {
     }
 
     //creates computer board with playround as click event callback and flattened board for rendering board
-    buildComputerBoard(playRound,computer.getFlatBoard())
+    buildComputerBoard(playRound,computer.getFlatBoard(),user.getFlatBoard())
 
     
     return {
