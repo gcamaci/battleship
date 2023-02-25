@@ -63,3 +63,22 @@ test('receive Attack from player, hit correct ship',() => {
     expect(playerBoard.getShips()[2].getHealth()).toBe(0)
 
 })
+
+test('check valid Target', () => {
+    const gameBoard = GameBoard()
+    expect(gameBoard.getShips()).toHaveLength(5)
+    gameBoard.placeShip(gameBoard.getShips()[4],'12')
+    expect(gameBoard.getBoard()[1][2]).toBe('destroyer')
+    expect(gameBoard.getBoard()[1][3]).toBe('destroyer')
+    expect(gameBoard.getBoard()[1][4]).toBe('destroyer')
+    expect(gameBoard.getBoard()[1][5]).toBe('destroyer')
+    expect(gameBoard.getBoard()[1][6]).toBe('destroyer')
+    expect(gameBoard.getBoard()[1][7]).toBe('destroyer')
+    
+
+    expect(gameBoard.checkValidTarget('14',6,true)).toBeFalsy();
+    expect(gameBoard.checkValidTarget('44',6,true)).toBeTruthy();
+    
+
+
+})

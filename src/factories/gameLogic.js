@@ -37,11 +37,11 @@ const GameController = (() => {
         //console.log(userHit)
     
         
-        renderComputerBoard(computer.getFlatBoard(),user.getFlatBoard());
+        
        
         console.log(checkWin())
-        //check win called down here, after enemy makes turn.
-        //render boards called down here 
+        renderComputerBoard(computer.getFlatBoard(),user.getFlatBoard());
+        
     }
     //make mock function to test this, drain ship health
     const checkWin = () => {

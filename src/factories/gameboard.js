@@ -33,13 +33,25 @@ const GameBoard = () => {
         return placed
     }   
     
+
+    const randomShipPlacement = () => {
+        //generate random number
+        //check if number is a valid placement
+        //valid placement should consider the ships position (vertical/horizantal)
+
+        ships.forEach((ship) => {
+            //if checkValidSpots(cord,ship.length,ship.position)===true
+
+        });
+       
+    }
     //records attempts, returns if hit.
     const receiveAttack = (cord) => {
         if (attempts.includes(cord)) return
         let hit = false;
         let [x,y] = formatCord(cord)
         let targetShip;
-        
+
         if (gameBoard[x][y] === 0){
             gameBoard[x][y] = 'X'
             
@@ -64,18 +76,48 @@ const GameBoard = () => {
     }
 
     function formatCord(cord){
-        const zeroTest = parseInt(cord);
         const cord_array = cord.split('').map((num)=>parseInt(num))
-
+        const zeroTest = parseInt(cord);
         if (zeroTest < 10){
             cord_array[1] = cord_array[0]
             cord_array[0] = 0; 
         }
         return cord_array
     }
+    const checkValidTarget = (cord,length,position) => {
+        let valid = false
+        let count = 0
+        const [x,y] = formatCord(cord)
+        if (position) {
+            let horizantalDistance = gameBoard[x].length - y 
+            if(length > horizantalDistance) return 
+            for (let i = 0; i < length; i++){
+                if(gameBoard[x][y + i] === 0){
+                    count = count + 1
+                }     
+            }
+        } else {
+            let verticalDistance = 10 - x;
+            if(length > verticalDistance) return
+            for (let i = 0 ; i < length; i++){
+                if(gameBoard[x + i][y] === 0){
+                    count = count +1
+                }
+            }
+        }
+
+        if(count === length) {
+            valid = true
+        }
+        
+        return valid
+
+
+
+    };
     const getBoard = () => gameBoard;
     const getShips = () => ships;
-    return{placeShip,getShips,receiveAttack,getBoard,formatCord,allShipSunk}
+    return{placeShip,getShips,receiveAttack,getBoard,formatCord,allShipSunk,checkValidTarget}
 }
 
 export{ GameBoard }
