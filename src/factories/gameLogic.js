@@ -14,11 +14,17 @@ const GameController = (() => {
     computer.gameBoard.placeShip(computer.gameBoard.getShips()[4],'64')
 
     //manually placing user ships 
+    /*
+    user.gameBoard.getShips()[1].togglePosition()
+    user.gameBoard.getShips()[3].togglePosition()
     user.gameBoard.placeShip(user.gameBoard.getShips()[0],'6')
-    user.gameBoard.placeShip(user.gameBoard.getShips()[1],'45')
+    user.gameBoard.placeShip(user.gameBoard.getShips()[1],'35')
     user.gameBoard.placeShip(user.gameBoard.getShips()[2],'20')
-    user.gameBoard.placeShip(user.gameBoard.getShips()[3],'72')
+    user.gameBoard.placeShip(user.gameBoard.getShips()[3],'29')
     user.gameBoard.placeShip(user.gameBoard.getShips()[4],'91')
+    */
+
+    user.gameBoard.randomShipPlacement()
 
     //user makes move,if hit check win and handle gameController
     const playRound = event => {

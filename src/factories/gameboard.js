@@ -39,15 +39,29 @@ const GameBoard = () => {
         return placed
     }   
     
+    const randomValidCord = (ship) => {
+        let valid = false;
+        let randomcord;
+        while(valid === false){
+            let randomNum = Math.floor(Math.random() * 100) + 1;
+            randomcord = randomNum.toString()
+            if (checkValidTarget(randomcord,ship.length,ship.getPosition())) {
+                valid = true  
+            }
+
+        }
+
+        return randomcord
+        
+    }
 
     const randomShipPlacement = () => {
-        //generate random number
-        //check if number is a valid placement
-        //valid placement should consider the ships position (vertical/horizantal)
-
-        ships.forEach((ship) => {
-            //if checkValidSpots(cord,ship.length,ship.position)===true
-
+        ships.forEach((ship,index) => {
+            if(index % 2 !== 0){
+                ship.togglePosition()
+            }
+            let cord = randomValidCord(ship)
+            placeShip(ship,cord)
         });
        
     }
@@ -123,7 +137,16 @@ const GameBoard = () => {
     };
     const getBoard = () => gameBoard;
     const getShips = () => ships;
-    return{placeShip,getShips,receiveAttack,getBoard,formatCord,allShipSunk,checkValidTarget}
+    return { 
+        placeShip,
+        getShips,
+        receiveAttack,
+        getBoard,
+        formatCord,
+        allShipSunk,
+        checkValidTarget,
+        randomShipPlacement
+    }
 }
 
 export{ GameBoard }
