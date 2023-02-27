@@ -50,6 +50,7 @@ const GameBoard = () => {
             }
 
         }
+        
 
         return randomcord
         

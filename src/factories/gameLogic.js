@@ -1,28 +1,14 @@
 import { buildComputerBoard, renderComputerBoard } from "../ui/board";
+import { Player } from "./player";
 
-import { Player } from "./player"
 const GameController = (() => {
     const user = Player()
     const computer = Player()
     let gameOver = false;
-    let userPlacedShips = false;
-    //manually placing ships in enemy board for now. should create a player function that inializes board randomly
-    computer.gameBoard.placeShip(computer.gameBoard.getShips()[0],'4')
-    computer.gameBoard.placeShip(computer.gameBoard.getShips()[1],'40')
-    computer.gameBoard.placeShip(computer.gameBoard.getShips()[2],'32')
-    computer.gameBoard.placeShip(computer.gameBoard.getShips()[3],'95')
-    computer.gameBoard.placeShip(computer.gameBoard.getShips()[4],'64')
-
-    //manually placing user ships 
-    /*
-    user.gameBoard.getShips()[1].togglePosition()
-    user.gameBoard.getShips()[3].togglePosition()
-    user.gameBoard.placeShip(user.gameBoard.getShips()[0],'6')
-    user.gameBoard.placeShip(user.gameBoard.getShips()[1],'35')
-    user.gameBoard.placeShip(user.gameBoard.getShips()[2],'20')
-    user.gameBoard.placeShip(user.gameBoard.getShips()[3],'29')
-    user.gameBoard.placeShip(user.gameBoard.getShips()[4],'91')
-    */
+    let allShipsPlaced = false;
+    let shipsPlaced = 0;
+    
+    computer.gameBoard.randomShipPlacement()
 
     user.gameBoard.randomShipPlacement()
 
@@ -34,17 +20,11 @@ const GameController = (() => {
         //this causing problems, returning an array with ship, even tho there wont always be ship
         //const [userHit, userTarget] = user.attack(cord,computer)
         //[computerHit, computerTarget] = computer.randomAttack(user.gameBoard);
-
-        
         //still returning array for now
         user.attack(cord,computer)
         computer.randomAttack(user.gameBoard)
 
         //console.log(userHit)
-    
-        
-        
-       
         console.log(checkWin())
         renderComputerBoard(computer.getFlatBoard(),user.getFlatBoard());
         
