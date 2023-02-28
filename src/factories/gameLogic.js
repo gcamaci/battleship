@@ -1,4 +1,4 @@
-import { buildComputerBoard, renderComputerBoard } from "../ui/board";
+import { renderComputerBoard } from "../ui/board";
 import { Player } from "./player";
 
 const GameController = (() => {

@@ -1,3 +1,4 @@
+import { buildComputerBoard, buildPlayerBoards } from "./board";
 import { GameController } from "../factories/gameLogic";
 
 
@@ -39,12 +40,31 @@ const initialBoard = () => {
 }
 const positionButton = () => {
     const main = document.getElementById('content-container')
+    const buttonContainer = document.createElement('div')
+    buttonContainer.classList.add('flex','gap-2')
     const button = document.createElement('button')
     button.type = 'button'
     button.innerText = 'Position'
     button.classList.add('border','border-black','h-12')
     button.addEventListener('click',GameController.user.switchPlaceDirection)
-    main.appendChild(button)
+    
+
+    const playButton = document.createElement('button')
+    playButton.id = 'play_button'
+    playButton.innerText = 'Play'
+    playButton.classList.add('border','border-black','h-12')
+    playButton.addEventListener('click',() => {
+        buildPlayerBoards(
+            GameController.playRound(event),
+            GameController.computer.getFlatBoard(),
+            GameController.user.getFlatBoard()
+
+        )
+    })
+
+
+    buttonContainer.append(button,playButton)
+    main.appendChild(buttonContainer)
 
 }
 
