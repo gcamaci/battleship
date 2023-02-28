@@ -16,7 +16,7 @@ const GameController = (() => {
     const playRound = event => {
         if (gameOver) return
         let cord = event.target.dataset.cord 
-
+        
         //this causing problems, returning an array with ship, even tho there wont always be ship
         //const [userHit, userTarget] = user.attack(cord,computer)
         //[computerHit, computerTarget] = computer.randomAttack(user.gameBoard);

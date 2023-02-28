@@ -55,7 +55,7 @@ const positionButton = () => {
     playButton.classList.add('border','border-black','h-12')
     playButton.addEventListener('click',() => {
         buildPlayerBoards(
-            GameController.playRound(event),
+            GameController.playRound,
             GameController.computer.getFlatBoard(),
             GameController.user.getFlatBoard()
 

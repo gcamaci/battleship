@@ -4,6 +4,7 @@
 //build game board
 const buildPlayerBoards = (callBack,computerBoard,userGameboard) => {
     const main_container = document.getElementById('content-container');
+    main_container.innerHTML = ''
     const userBoard = document.createElement('div')
     const enemyBoard = document.createElement('div');
     enemyBoard.id = 'enemy_board'
