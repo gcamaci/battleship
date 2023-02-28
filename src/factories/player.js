@@ -3,6 +3,7 @@ const Player = () => {
     const gameBoard = GameBoard()
     let shipsPlaced = 0;
     let doneWithPlacement = false;
+    let currentShip = gameBoard.getShips()[shipsPlaced]
 
     const attack = (cord,enemy) => {
         return enemy.gameBoard.receiveAttack(cord)
@@ -21,14 +22,19 @@ const Player = () => {
     //event listener
     const placeUserShip = (event) => {
         let cord = event.target.dataset.cord
-        const ship = gameBoard.getShips()[shipsPlaced]
+        
         if(!doneWithPlacement){
-            if (!gameBoard.checkValidTarget(cord,ship.length,ship.getPosition())) return
-            gameBoard.placeShip(ship, cord)
+            if (!gameBoard.checkValidTarget(cord,currentShip.length,currentShip.getPosition())) return
+            gameBoard.placeShip(currentShip, cord)
+            console.log(currentShip.getName())
             shipsPlaced = shipsPlaced + 1
         }
+        
         if(shipsPlaced === 5){
             doneWithPlacement = true
+            
+        }else{
+            currentShip = gameBoard.getShips()[shipsPlaced]
         }
     }
     return { 
