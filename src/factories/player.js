@@ -20,6 +20,10 @@ const Player = () => {
         return enemyBoard.receiveAttack(randomCord.toString())
     }
     //event listener
+    const switchPlaceDirection = () => {
+        currentShip.togglePosition()
+        console.log(currentShip.getPosition())
+    }
     const placeUserShip = (event) => {
         let cord = event.target.dataset.cord
         
@@ -42,7 +46,8 @@ const Player = () => {
         gameBoard,
         randomAttack,
         getFlatBoard,
-        placeUserShip
+        placeUserShip,
+        switchPlaceDirection
     }
 }
 

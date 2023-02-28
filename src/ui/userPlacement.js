@@ -35,8 +35,18 @@ const initialBoard = () => {
 
     }
     main.appendChild(userBoard)
+    positionButton()
 }
+const positionButton = () => {
+    const main = document.getElementById('content-container')
+    const button = document.createElement('button')
+    button.type = 'button'
+    button.innerText = 'Position'
+    button.classList.add('border','border-black','h-12')
+    button.addEventListener('click',GameController.user.switchPlaceDirection)
+    main.appendChild(button)
 
+}
 
 
 export{initialBoard}
