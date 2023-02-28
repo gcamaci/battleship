@@ -10,7 +10,7 @@ const GameController = (() => {
     
     computer.gameBoard.randomShipPlacement()
 
-    user.gameBoard.randomShipPlacement()
+    //user.gameBoard.randomShipPlacement()
 
     //user makes move,if hit check win and handle gameController
     const playRound = event => {
@@ -51,7 +51,7 @@ const GameController = (() => {
     }
 
     //creates computer board with playround as click event callback and flattened board for rendering board
-    buildComputerBoard(playRound,computer.getFlatBoard(),user.getFlatBoard())
+    //buildComputerBoard(playRound,computer.getFlatBoard(),user.getFlatBoard())
 
     
     return {

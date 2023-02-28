@@ -18,12 +18,25 @@ const Player = () => {
         const randomCord = Math.floor(Math.random() * 100) + 1;
         return enemyBoard.receiveAttack(randomCord.toString())
     }
-    
+    //event listener
+    const placeUserShip = (event) => {
+        let cord = event.target.dataset.cord
+        const ship = gameBoard.getShips()[shipsPlaced]
+        if(!doneWithPlacement){
+            if (!gameBoard.checkValidTarget(cord,ship.length,ship.getPosition())) return
+            gameBoard.placeShip(ship, cord)
+            shipsPlaced = shipsPlaced + 1
+        }
+        if(shipsPlaced === 5){
+            doneWithPlacement = true
+        }
+    }
     return { 
         attack,
         gameBoard,
         randomAttack,
-        getFlatBoard
+        getFlatBoard,
+        placeUserShip
     }
 }
 

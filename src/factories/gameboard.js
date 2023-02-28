@@ -50,10 +50,7 @@ const GameBoard = () => {
             }
 
         }
-        
-
         return randomcord
-        
     }
 
     const randomShipPlacement = () => {

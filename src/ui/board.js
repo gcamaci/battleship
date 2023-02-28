@@ -1,7 +1,7 @@
 //going to build both boards after user initializes ship placement
 
 
-
+//build game board
 const buildComputerBoard = (callBack,computerBoard,userGameboard) => {
     const main_container = document.getElementById('content-container');
     const userBoard = document.createElement('div')
@@ -60,12 +60,11 @@ const renderComputerBoard = (computer,user) => {
         }
     }
 }
-const initialUserBoard = () => {
-    const enemyBoard = document.createElement('div');
+
+
+const renderPlacementBoard = () => {
     
-
 }
-
 
 function setAttrbiutes(gameboard){
     
