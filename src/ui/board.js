@@ -4,13 +4,14 @@
 //build game board
 const buildPlayerBoards = (callBack,computerBoard,userGameboard) => {
     const main_container = document.getElementById('content-container');
+    main_container.classList.remove('flex-col')
     main_container.innerHTML = ''
     const userBoard = document.createElement('div')
     const enemyBoard = document.createElement('div');
     enemyBoard.id = 'enemy_board'
-    enemyBoard.classList.add('grid','grid-cols-10','w-3/5','h-96')//enemyboard tw style
+    enemyBoard.classList.add('grid','grid-cols-10','w-[500px]','h-[500px]')//enemyboard tw style
     userBoard.id = 'user_board'
-    userBoard.classList.add('grid','grid-cols-10','w-3/5','h-96')// user board TW
+    userBoard.classList.add('grid','grid-cols-10','w-[500px]','h-[500px]')// user board TW
 
     
     for (let i = 0; i < 100; i++) {
