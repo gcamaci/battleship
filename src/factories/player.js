@@ -14,6 +14,8 @@ const Player = () => {
         return attribute_values
 
     }
+    const placementStatus = () => doneWithPlacement
+    const getCurrentShip = () => currentShip
 
     const randomAttack = (enemyBoard) => {
         const randomCord = Math.floor(Math.random() * 100) + 1;
@@ -21,7 +23,9 @@ const Player = () => {
     }
     //event listener
     const switchPlaceDirection = () => {
-        currentShip.togglePosition()
+        gameBoard.getShips().forEach((ship)=>{
+            ship.togglePosition()
+        })
         console.log(currentShip.getPosition())
     }
     const placeUserShip = (event) => {
@@ -47,7 +51,9 @@ const Player = () => {
         randomAttack,
         getFlatBoard,
         placeUserShip,
-        switchPlaceDirection
+        switchPlaceDirection,
+        getCurrentShip,
+        placementStatus
     }
 }
 

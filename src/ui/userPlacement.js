@@ -8,15 +8,41 @@ const renderPlaceBoard = () => {
     const nodes = document.querySelectorAll('.user-spaces')
 
     userBoard.forEach((cell,index) => {
+        nodes[index].classList.remove('bg-yellow-300')
         if(cell !== 0 && cell !== 1 && cell !== 'X'){
             nodes[index].style.backgroundColor = 'black'
-        }else{
+        }/*else{
             nodes[index].style.backgroundColor = 'blue'
         }
-        
+        */
     });
 
 
+}
+
+const hoverHighlight = (event) => {
+    if(GameController.user.placementStatus()) return
+    let cord = parseInt(event.target.dataset.cord)
+    const nodes = document.querySelectorAll('.user-spaces')
+    const currentShip = GameController.user.getCurrentShip()
+    nodes.forEach((node)=>{
+        node.classList.remove('bg-yellow-300')
+    })
+    for (let i = 0; i < currentShip.length; i++){
+        let node = nodes[cord]
+        node.classList.add('bg-yellow-300')
+        if(currentShip.getPosition()){
+            cord = cord + 1
+        }else{
+            cord = cord + 10
+        }
+    }
+   
+
+    //const flatBoard = GameController.user.getFlatBoard()
+    
+
+    
 }
 
 const initialBoard = () => {
@@ -31,11 +57,19 @@ const initialBoard = () => {
         cell.addEventListener('click',(event) => {
             GameController.user.placeUserShip(event)
             renderPlaceBoard()
+
         })
+
+
+        cell.addEventListener('mouseover',hoverHighlight)
+        //addEventListener('mouseout',renderPlaceBoard)
+        
         userBoard.appendChild(cell)
 
     }
+    userBoard.addEventListener('mouseout',renderPlaceBoard)
     main.appendChild(userBoard)
+
     positionButton()
 }
 const positionButton = () => {

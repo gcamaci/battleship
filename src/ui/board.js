@@ -42,7 +42,7 @@ const renderComputerBoard = (computer,user) => {
         [user,user_nodes]
     ]
     
-    console.log(nodeObjArray[1][1])
+    
     
     for (let i = 0; i < nodeObjArray.length; i++) {
         let board = nodeObjArray[i][0]
