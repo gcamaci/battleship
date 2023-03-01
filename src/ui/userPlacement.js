@@ -1,4 +1,4 @@
-import { buildComputerBoard, buildPlayerBoards } from "./board";
+import { buildPlayerBoards } from "./board";
 import { GameController } from "../factories/gameLogic";
 
 
@@ -45,35 +45,8 @@ const hoverHighlight = (event) => {
     
 }
 
-const initialBoard = () => {
-    const main = document.getElementById('content-container');
-    const userBoard = document.createElement('div')
-    userBoard.id = 'user_board'
-    userBoard.classList.add('grid','grid-cols-10','w-3/5','h-96')
-    for ( let i = 0; i < 100; i++ ) {
-        const cell = document.createElement('div')
-        cell.classList.add('border','border-black','user-spaces')
-        cell.dataset.cord = `${i}`
-        cell.addEventListener('click',(event) => {
-            GameController.user.placeUserShip(event)
-            renderPlaceBoard()
 
-        })
-
-
-        cell.addEventListener('mouseover',hoverHighlight)
-        //addEventListener('mouseout',renderPlaceBoard)
-        
-        userBoard.appendChild(cell)
-
-    }
-    userBoard.addEventListener('mouseout',renderPlaceBoard)
-    main.appendChild(userBoard)
-
-    positionButton()
-}
-const positionButton = () => {
-    const main = document.getElementById('content-container')
+const buildButtons = () => {
     const buttonContainer = document.createElement('div')
     buttonContainer.classList.add('flex','gap-2')
     const button = document.createElement('button')
@@ -98,9 +71,41 @@ const positionButton = () => {
 
 
     buttonContainer.append(button,playButton)
-    main.appendChild(buttonContainer)
+    return buttonContainer
 
 }
+const initialBoard = () => {
+    const userBoard = document.createElement('div')
+    userBoard.id = 'user_board'
+    userBoard.classList.add('grid','grid-cols-10','w-3/5','h-96')
+    for ( let i = 0; i < 100; i++ ) {
+        const cell = document.createElement('div')
+        cell.classList.add('border','border-black','user-spaces')
+        cell.dataset.cord = `${i}`
+        cell.addEventListener('click',(event) => {
+            GameController.user.placeUserShip(event)
+            renderPlaceBoard()
+
+        })
 
 
-export{initialBoard}
+        cell.addEventListener('mouseover',hoverHighlight)
+        //addEventListener('mouseout',renderPlaceBoard)
+        
+        userBoard.appendChild(cell)
+
+    }
+    userBoard.addEventListener('mouseout',renderPlaceBoard)
+    
+    return userBoard
+    //positionButton()
+}
+
+const initialLoad = () =>{
+    const main = document.getElementById('content-container')
+    const board = initialBoard()
+    const buttons = buildButtons()
+    main.append(board,buttons)
+    
+}
+export{initialLoad}

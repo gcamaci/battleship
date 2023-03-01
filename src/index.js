@@ -1,5 +1,5 @@
 import style from './style.css'
 //import { GameController } from './factories/gameLogic'
-import { initialBoard } from './ui/userPlacement'
+import { initialLoad } from './ui/userPlacement'
 
-initialBoard()
+initialLoad()

@@ -35,7 +35,6 @@ const GameBoard = () => {
                 placed = true;
             }
         }
-        
         return placed
     }   
     
